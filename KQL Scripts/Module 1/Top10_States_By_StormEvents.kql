@@ -1,0 +1,6 @@
+﻿//top 10 states with the highest number of storm events
+
+StormEvents
+| summarize EventCount = count() by State
+| sort by EventCount desc
+| top 100 by EventCount
