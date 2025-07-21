@@ -1,0 +1,9 @@
+﻿//Parameterized Query using 'let'
+let inputState = "TEXAS";
+let inputEventType = "Hail";
+
+//Filters dataset to include only Hail events that occurred in the state of Texas
+StormEvents
+| where State == inputState
+  and EventType == inputEventType
+| summarize TotalEvents = count(), TotalDamage = sum(DamageProperty)

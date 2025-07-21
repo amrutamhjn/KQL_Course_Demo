@@ -1,0 +1,11 @@
+﻿//Parameterized Query using 'declare query_parameters'
+declare query_parameters(
+  inputState:string = "TEXAS",
+  inputEventType:string
+);
+
+//Filters dataset to include only Hail events that occurred in the state of Texas
+StormEvents
+| where State == inputState
+  and EventType == inputEventType
+| summarize TotalEvents = count(), TotalDamage = sum(DamageProperty)
