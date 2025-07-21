@@ -1,0 +1,9 @@
+﻿//Using 'let' to reuse logic
+
+//Texas ThunderStorm
+let TexasStorms = StormEvents
+| where State == "TEXAS" and EventType == "Thunderstorm Wind";
+
+TexasStorms
+|summarize TotalEvents = count(), MaxDamage = max(DamageProperty)
+|project TotalEvents, MaxDamage

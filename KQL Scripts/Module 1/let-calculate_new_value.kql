@@ -1,0 +1,10 @@
+﻿//Using 'let' to calculate new value
+
+//Calculate Storm Impact Score
+let StormImpactScore = StormEvents
+| extend ImpactScore = DamageProperty + DamageCrops
+| where State == "FLORIDA";
+
+// Use the let result in the main analysis
+StormImpactScore
+| summarize AvgImpact = avg(ImpactScore), MaxImpact = max(ImpactScore)
